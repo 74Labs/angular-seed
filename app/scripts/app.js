@@ -10,7 +10,7 @@
  */
 angular
 
-.module('app', [
+  .module('app', [
   'ngAnimate',
   'ngCookies',
   'ngResource',
@@ -18,9 +18,11 @@ angular
   'ui.router'
 ])
 
-.controller('AppCtrl', function($scope, $http, $interval, $rootScope) {
+.controller('AppCtrl', function($rootScope, $scope, $http, $interval) {
 
   var self = this;
+
+  $rootScope.app.mode = 'sidebar-mini';
 
   self.checkOnlineStatus = function() {
     $http.get('http://localhost:3000/status')
@@ -42,14 +44,18 @@ angular
 
 })
 
-.run(function($rootScope, $window) {
+.run(function($rootScope, $state, $window) {
+  $rootScope.$state = $state;
   $rootScope.app = {
+    mode: 'layout-top-nav',
     skin: 'skin-blue',
     online: true,
     error: null
   };
   $rootScope.$on('$includeContentLoaded', function() {
     $window.$.AdminLTE.layout.activate();
+    $window.$.AdminLTE.layout.fix();
+    console.log('FIX');
   });
 })
 
@@ -57,7 +63,7 @@ angular
 
   $stateProvider
 
-  .state('site', {
+    .state('site', {
     url: '/',
     abstract: true,
     templateUrl: 'views/site/layout/main.html'

@@ -14,10 +14,10 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.css" />
     <!-- endbower -->
-    <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-yellow.min.css">
+    <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/_all-skins.min.css">
     <!-- endbuild -->
   </head>
-  <body class="hold-transition skin-yellow layout-top-nav">
+  <body class="hold-transition" ng-class="app.mode" ng-class="app.skin">
     <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
     <div class="wrapper" ui-view></div>

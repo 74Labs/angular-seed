@@ -1,9 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Baloo);
+@import url(https://fonts.googleapis.com/css?family=Offside);
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 $fa-font-path: "../bower_components/font-awesome/fonts/"; // bower:scss
  @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
  @import "font-awesome/scss/font-awesome.scss";
  // endbower
+ html, body {
+   min-height: 100%;
+   height: 100%;
+ }
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,13 +15,15 @@ $fa-font-path: "../bower_components/font-awesome/fonts/"; // bower:scss
   padding: 0.2em 0;
 }
 .brand {
-  font-family: 'Baloo';
+  font-family: 'Offside';
   font-weight: 400;
 }
 .text-8x {
   font-size: 800%;
 }
-.content-wrapper {
-  min-height: 100%;
-  height: 100%;
+.full-height {
+  min-height: 100% !important;
+  height: 100% !important;
 }
+
+@import url(colors.scss)
