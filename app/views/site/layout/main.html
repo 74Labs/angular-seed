@@ -1,2 +1,7 @@
-<ng-include src="'views/site/layout/header.html'"></ng-include>
-<section class="container" ui-view></section>
+<header class="main-header" ng-include="'views/site/layout/header.html'"></header>
+
+<div class="content-wrapper">
+  <section class="content" ui-view></section>
+</div>
+
+<footer class="main-footer" ng-include="'views/site/layout/footer.html'"></footer>

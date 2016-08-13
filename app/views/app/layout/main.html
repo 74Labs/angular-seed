@@ -1,2 +1,24 @@
-<ng-include src="'views/app/layout/header.html'"></ng-include>
-<section class="container-fluid" ui-view></section>
+<header class="main-header" ng-include="'views/app/layout/header.html'"></header>
+
+<!-- <aside class="main-sidebar" ng-include="'views/app/layout/sidebar.html'"></aside> -->
+
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        {{ $state.current.data.title }}
+        <small>{{ $state.current.data.description }}</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <a href="#"><i class="fa fa-dashboard"></i> Level</a>
+        </li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+    <section class="content" ui-view></section>
+</div>
+
+<footer class="main-footer" ng-include="'views/app/layout/footer.html'"></footer>
+
+<!-- <aside class="control-sidebar control-sidebar-dark" ng-include="'views/app/layout/sidebar-right.html'"></aside>
+<div class="control-sidebar-bg"></div> -->
