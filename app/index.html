@@ -12,13 +12,20 @@
     <!-- endbuild -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.css" />
+    <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.css"/>
     <!-- endbower -->
     <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/_all-skins.min.css">
     <!-- endbuild -->
   </head>
-  <body class="hold-transition" ng-class="app.mode" ng-class="app.skin">
+  <body class="hold-transition" ng-class="app.mode + ' ' + app.skin">
     <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+
+    <div ng-if="!app.online" class="alert alert-danger flat no-margin">
+      <h4>
+        <i class="icon fa fa-ban"></i>
+        Alert!</h4>
+      Server seems to be down.
+    </div>
 
     <div class="wrapper" ui-view></div>
 

@@ -18,21 +18,27 @@ angular
   'ui.router'
 ])
 
+.controller('SiteCtrl', function($rootScope) {
+
+  $rootScope.app.mode = 'layout-top-nav';
+  $rootScope.app.skin = 'skin-black-light';
+
+})
+
 .controller('AppCtrl', function($rootScope, $scope, $http, $interval) {
 
   var self = this;
 
-  $rootScope.app.mode = 'sidebar-mini';
+  $rootScope.app.mode = 'sidebar-mini sidebar-collapse';
+  $rootScope.app.skin = 'skin-yellow';
 
   self.checkOnlineStatus = function() {
     $http.get('http://localhost:3000/status')
       .success(function() {
-        $rootScope.app.skin = 'skin-yellow';
-        $rootScope.app.error = null;
+        $rootScope.app.online = true;
       })
       .error(function() {
-        $rootScope.app.skin = 'skin-red';
-        $rootScope.app.error = 'Server is offline. Retrying connection...';
+        $rootScope.app.online = false;
       });
   };
 
@@ -44,18 +50,23 @@ angular
 
 })
 
-.run(function($rootScope, $state, $window) {
+.run(function($log, $rootScope, $state, $window) {
   $rootScope.$state = $state;
   $rootScope.app = {
-    mode: 'layout-top-nav',
-    skin: 'skin-blue',
     online: true,
-    error: null
+    error: null,
+    user: null
   };
   $rootScope.$on('$includeContentLoaded', function() {
     $window.$.AdminLTE.layout.activate();
     $window.$.AdminLTE.layout.fix();
-    console.log('FIX');
+    $window.$.AdminLTE.layout.fixSidebar();
+    $log.debug('AdminLTE', 'Activate');
+  });
+  $rootScope.$on('$stateChangeSuccess', function() {
+    $window.$.AdminLTE.layout.fix();
+    $window.$.AdminLTE.layout.fixSidebar();
+    $log.debug('AdminLTE', 'Fix');
   });
 })
 
@@ -63,10 +74,11 @@ angular
 
   $stateProvider
 
-    .state('site', {
+  .state('site', {
     url: '/',
     abstract: true,
-    templateUrl: 'views/site/layout/main.html'
+    templateUrl: 'views/site/layout/main.html',
+    controller: 'SiteCtrl'
   })
 
   .state('site.home', {
