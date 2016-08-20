@@ -1,6 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Offside);
+@import 'https://fonts.googleapis.com/css?family=Offside';
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-$fa-font-path: "../bower_components/font-awesome/fonts/"; // bower:scss
+$fa-font-path: "../bower_components/font-awesome/fonts/";
+// bower:scss
  @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
  @import "font-awesome/scss/font-awesome.scss";
  // endbower
@@ -25,5 +26,8 @@ $fa-font-path: "../bower_components/font-awesome/fonts/"; // bower:scss
   min-height: 100% !important;
   height: 100% !important;
 }
+.clickable {
+  cursor: pointer;
+}
 
-@import url(colors.scss)
+@import "colors.scss"

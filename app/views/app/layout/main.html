@@ -3,19 +3,28 @@
 <aside class="main-sidebar" ng-include="'views/app/layout/sidebar.html'"></aside>
 
 <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        {{ $state.current.data.title }}
-        <small>{{ $state.current.data.description }}</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li>
-          <a href="#"><i class="fa fa-dashboard"></i> Level</a>
-        </li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
-    <section class="content" ui-view></section>
+
+  <div ng-if="!app.online" class="alert alert-danger flat no-margin">
+    <h4>
+      <i class="icon fa fa-exclamation fa-2x"></i>&nbsp;Alert!</h4>
+    Server seems to be down.
+  </div>
+
+  <section class="content-header">
+    <h1>
+      {{ $state.current.data.title }}
+      <small>{{ $state.current.data.description }}</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">
+          <i class="fa fa-dashboard"></i>
+          Level</a>
+      </li>
+      <li class="active">Here</li>
+    </ol>
+  </section>
+  <section class="content" ui-view></section>
 </div>
 
 <footer class="main-footer" ng-include="'views/app/layout/footer.html'"></footer>
